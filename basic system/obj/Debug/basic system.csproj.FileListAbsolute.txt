@@ -1,0 +1,31 @@
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic system.csproj.AssemblyReference.cache
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic_system.Form1.resources
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic_system.Properties.Resources.resources
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic system.csproj.GenerateResource.cache
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic system.csproj.CoreCompileInputs.cache
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\bin\Debug\basic system.exe.config
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\bin\Debug\basic system.exe
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\bin\Debug\basic system.pdb
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic system.exe
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic system.pdb
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic system.exe.config
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic_system.Form2.resources
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic_system.Form3.resources
+C:\Users\YOGA\Documents\HND\Programming\basic system\basic system\obj\Debug\basic_system.Form4.resources
+D:\basic system\basic system\bin\Debug\basic system.exe.config
+D:\basic system\basic system\obj\Debug\basic system.exe
+D:\basic system\basic system\obj\Debug\basic system.pdb
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\bin\Debug\basic system.exe
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\bin\Debug\basic system.pdb
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic system.csproj.AssemblyReference.cache
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic_system.Form3.resources
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic_system.Form1.resources
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic_system.Form4.resources
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic_system.Form2.resources
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic_system.Properties.Resources.resources
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic system.csproj.GenerateResource.cache
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic system.csproj.CoreCompileInputs.cache
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\bin\Debug\basic system.exe.config
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic system.exe
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic system.pdb
+D:\Madara Pushpika\Documents\Tuan sir\basic system\basic system\obj\Debug\basic system.exe.config
