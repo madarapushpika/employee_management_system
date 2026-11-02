@@ -159,7 +159,7 @@ namespace basic_system
             sqlcon.Open();
 
             //Sql query
-            SqlCommand sqlcmd = new SqlCommand("Update Students set Name = @Name , Address = @Address , Gender = @Gender , @Status = @Status where St_No = @St_No", sqlcon);
+            SqlCommand sqlcmd = new SqlCommand("UPDATE Students SET Name = @Name, Address = @Address, Gender = @Gender, Status = @Status WHERE St_No = @St_No", sqlcon);
 
             //Equalling Parameaters to relevent db columns
             sqlcmd.Parameters.AddWithValue("@St_No", stdno);
@@ -174,7 +174,7 @@ namespace basic_system
             //closing thw con
             sqlcon.Close();
 
-            MessageBox.Show("Inserted Successfull");
+            MessageBox.Show("Updated Successfully");
 
             //method calling - clearing fields
             button5_Click(sender, e);
