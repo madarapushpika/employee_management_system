@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace basic_system
 {
@@ -39,28 +40,72 @@ namespace basic_system
 
         private void button3_Click(object sender, EventArgs e)
         {
-            String epmno= cmbempno.SelectedItem.ToString();
-            String empname=txtempname.Text;
-            String empaddress=txtempaddress.Text;
+            try
+            {
+                // Get employee details
+                if (cmbempno.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select Employee Number");
+                    return;
+                }
 
-            //radio button
-            char gender;
-            if (rdmale.Checked == true)
-            { gender = 'M'; }
-            else { gender = 'F'; }
+                string empno = cmbempno.SelectedItem.ToString();
+                string empname = txtempname.Text.Trim();
+                string empaddress = txtempaddress.Text.Trim();
 
-            //checl box code
+                // Get Gender
+                char gender;
+
+                if (rdmale.Checked == true)
+                {
+                    gender = 'M';
+                }
+                else
+                {
+                    gender = 'F';
+                }
+
+                // Get Status
                 char status;
-            if (cbactive.Checked == true)
-            { status = 'A'; }
-            else { status = 'D'; }
 
+                if (cbactive.Checked == true)
+                {
+                    status = 'A';
+                }
+                else
+                {
+                    status = 'D';
+                }
 
-            MessageBox.Show("Emp No = " + epmno + "\n" +
-                            "Emp name = " + empname + "\n" +
-                            "Emp Addreess = "+ empaddress+"\n"+
-                            "Gender = "+gender+"\n"+
-                            "Status = "+status+"\n");
+                // Database connection
+                using (SqlConnection sqlcon = new SqlConnection(
+                    "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Madara;Integrated Security=True;"))
+                {
+                    sqlcon.Open();
+
+                    // SQL query
+                    SqlCommand sqlcmd = new SqlCommand(
+                        "INSERT INTO Employees (Emp_No, Name, Address, Gender, Status) VALUES (@Emp_No, @Name, @Address, @Gender, @Status)",
+                        sqlcon);
+
+                    // Add parameters
+                    sqlcmd.Parameters.AddWithValue("@Emp_No", empno);
+                    sqlcmd.Parameters.AddWithValue("@Name", empname);
+                    sqlcmd.Parameters.AddWithValue("@Address", empaddress);
+                    sqlcmd.Parameters.AddWithValue("@Gender", gender);
+                    sqlcmd.Parameters.AddWithValue("@Status", status);
+
+                    // Execute query
+                    sqlcmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Employee Inserted Successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
