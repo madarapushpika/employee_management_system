@@ -29,19 +29,27 @@ namespace basic_system
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String un = "user";
-            String pwd = "123";
+            string un = txtun.Text.Trim();
+            string pwd = txtpwd.Text;
 
-            if (un.Equals("user") && pwd.Equals("123"))
+            if (string.IsNullOrWhiteSpace(un) ||
+                string.IsNullOrWhiteSpace(pwd))
+            {
+                MessageBox.Show("Please enter username and password");
+            }
+            else if (un == "user" && pwd == "123")
             {
                 MessageBox.Show("Login successful");
 
-                this.Hide();// hide the previous form after login 
+                this.Hide();
+
                 Form2 mm = new Form2();
-                mm.Show();// show the new form 
+                mm.Show();
             }
-            else { MessageBox.Show("login unsuccessful"); }
-        
+            else
+            {
+                MessageBox.Show("Invalid username or password");
+            }
         }
 
         private void txtun_TextChanged(object sender, EventArgs e)

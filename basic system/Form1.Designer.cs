@@ -90,6 +90,7 @@
             this.txtpwd.Name = "txtpwd";
             this.txtpwd.Size = new System.Drawing.Size(155, 22);
             this.txtpwd.TabIndex = 1;
+            this.txtpwd.UseSystemPasswordChar = true;
             this.txtpwd.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // txtun
