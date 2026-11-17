@@ -25,7 +25,8 @@ namespace basic_system
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            ABC_Management abc = new ABC_Management();
+            abc.ShowDialog();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
