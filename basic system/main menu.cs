@@ -43,7 +43,8 @@ namespace basic_system
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            Labour_Management labour = new Labour_Management();
+            labour.Show();
         }
     }
 }

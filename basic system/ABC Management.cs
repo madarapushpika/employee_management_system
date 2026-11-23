@@ -182,6 +182,7 @@ namespace basic_system
                 !int.TryParse(txtscore.Text, out score) ||
                 score < 0 || score > 100 ||
                 cmbcategory.SelectedIndex == -1)
+                string.IsNullOrWhiteSpace(txtremarks.Text);
             {
                 MessageBox.Show("Please enter valid employee and performance details.");
                 return;
@@ -263,6 +264,7 @@ namespace basic_system
                 !int.TryParse(txtscore.Text, out score) ||
                 score < 0 || score > 100 ||
                 cmbcategory.SelectedIndex == -1)
+                string.IsNullOrWhiteSpace(txtremarks.Text);
             {
                 MessageBox.Show("Please enter valid performance details.");
                 return;
