@@ -124,15 +124,20 @@ namespace basic_system
 
         private void cmbempno_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbempno.SelectedValue == null)
+     
+            if (cmbempno.SelectedValue == null ||
+                cmbempno.SelectedValue is DataRowView)
+            {
                 return;
+            }
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string query = "SELECT Name FROM Employees WHERE Emp_No = @Emp_No";
 
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@Emp_No", cmbempno.SelectedValue);
+
+                cmd.Parameters.AddWithValue("@Emp_No", cmbempno.SelectedValue.ToString());
 
                 con.Open();
 
@@ -149,24 +154,23 @@ namespace basic_system
         {
             int score;
 
-            if (int.TryParse(txtscore.Text, out score) && score >= 0 && score <= 100)
+            if (!int.TryParse(txtscore.Text, out score) || score < 0 || score > 100)
             {
-                if (score >= 90)
-                {
-                    cmbcategory.SelectedIndex = 0;
-                }
-                else if (score >= 70)
-                {
-                    cmbcategory.SelectedIndex = 1;
-                }
-                else
-                {
-                    cmbcategory.SelectedIndex = 2;
-                }
+                cmbcategory.SelectedIndex = -1;
+                return;
+            }
+
+            if (score >= 90)
+            {
+                cmbcategory.SelectedItem = "A - Excellent";
+            }
+            else if (score >= 70)
+            {
+                cmbcategory.SelectedItem = "B - Good";
             }
             else
             {
-                cmbcategory.SelectedIndex = -1;
+                cmbcategory.SelectedItem = "C - Needs Improvement";
             }
         }
 
@@ -186,14 +190,15 @@ namespace basic_system
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string query = @"INSERT INTO EmployeePerformance
-                         (Emp_No, Score, Category)
-                         VALUES (@Emp_No, @Score, @Category)";
+                 (Emp_No, Score, Category, Remarks)
+                 VALUES (@Emp_No, @Score, @Category, @Remarks)";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 
                 cmd.Parameters.AddWithValue("@Emp_No", cmbempno.SelectedValue);
                 cmd.Parameters.AddWithValue("@Score", score);
                 cmd.Parameters.AddWithValue("@Category", cmbcategory.Text);
+                cmd.Parameters.AddWithValue("@Remarks", txtremarks.Text);
 
                 try
                 {
@@ -220,9 +225,9 @@ namespace basic_system
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = @"SELECT Score, Category
-                         FROM EmployeePerformance
-                         WHERE Emp_No = @Emp_No";
+                string query = @"SELECT Score, Category, Remarks
+                 FROM EmployeePerformance
+                 WHERE Emp_No = @Emp_No";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 
@@ -236,12 +241,14 @@ namespace basic_system
                 {
                     txtscore.Text = dr["Score"].ToString();
                     cmbcategory.Text = dr["Category"].ToString();
+                    txtremarks.Text = dr["Remarks"].ToString();
                 }
                 else
                 {
                     MessageBox.Show("No Performance Record Found!");
                     txtscore.Clear();
                     cmbcategory.SelectedIndex = -1;
+                    txtremarks.Clear();
                 }
 
                 dr.Close();
@@ -264,15 +271,17 @@ namespace basic_system
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string query = @"UPDATE EmployeePerformance
-                         SET Score = @Score,
-                             Category = @Category
-                         WHERE Emp_No = @Emp_No";
+                 SET Score = @Score,
+                     Category = @Category,
+                     Remarks = @Remarks
+                 WHERE Emp_No = @Emp_No";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 
                 cmd.Parameters.AddWithValue("@Emp_No", cmbempno.SelectedValue);
                 cmd.Parameters.AddWithValue("@Score", score);
                 cmd.Parameters.AddWithValue("@Category", cmbcategory.Text);
+                cmd.Parameters.AddWithValue("@Remarks", txtremarks.Text);
 
                 con.Open();
 
@@ -322,6 +331,7 @@ namespace basic_system
                         LoadPerformance();
                         txtscore.Clear();
                         cmbcategory.SelectedIndex = -1;
+                        txtremarks.Clear();
 
                         MessageBox.Show("Performance Record Deleted Successfully!");
                     }
@@ -339,8 +349,23 @@ namespace basic_system
             txtempname.Clear();
             txtscore.Clear();
             cmbcategory.SelectedIndex = -1;
-
+            txtremarks.Clear();
             cmbempno.Focus();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
